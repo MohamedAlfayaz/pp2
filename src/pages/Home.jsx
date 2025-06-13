@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Export from "./Export";
 import Motor from "./Motor";
@@ -10,9 +10,9 @@ import Nav from "../components/Nav";
 const Home = () => {
   return (
     <div className="flex-1 overflow-y-auto">
-      <BrowserRouter>
-      <TopNav />
-      <Nav />
+      <HashRouter>
+        <TopNav />
+        <Nav />
         <div className="mt-13">
           <Routes>
             <Route path="/" element={<Dashboard />} />
@@ -27,10 +27,9 @@ const Home = () => {
                 </div>
               }
             />
-            
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 };
