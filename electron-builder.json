@@ -1,0 +1,14 @@
+{
+  "appId": "com.example.myapp",
+  "productName": "MyReactApp",
+  "files": [
+    "dist/**/*",
+    "electron/**/*",
+    "public/**/*",
+    "package.json"
+  ],
+  "linux": {
+    "target": ["AppImage"],
+    "category": "Utility"
+  }
+}
