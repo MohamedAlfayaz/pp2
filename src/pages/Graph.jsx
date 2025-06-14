@@ -64,8 +64,8 @@ const Graph = () => {
   }, [selectedTile]);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <h2 className="text-2xl text-center mb-2">Graph</h2>
+    <div className="bg-gray-50 p-6">
+      <h2 className="text-2xl text-center mb-2 font-bold text-gray-700">Graph</h2>
 
       <div className="flex justify-center mb-6 w-full max-w-sm mx-auto">
         <Select
@@ -80,7 +80,7 @@ const Graph = () => {
       {selectedTile && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {getSensorLabels(selectedTile).map((label) => (
-            <div key={label} className="bg-white p-4 rounded-lg shadow-md">
+            <div key={label} className="bg-white p-4 rounded-lg shadow-2xl">
               <h2 className="text-center font-semibold mb-2 text-gray-700">
                 {label}
               </h2>

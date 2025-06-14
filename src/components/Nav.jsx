@@ -28,12 +28,12 @@ const Nav = () => {
         animate={{ width: isExpanded ? 180 : 60 }}
         className={`${
           isExpanded ? "bg-[#f8f4ef]" : "bg-transparent"
-        } fixed top-16 left-0 h-full z-40 flex flex-col transition-all duration-300`}
+        } fixed top-15 left-0 h-full z-40 flex flex-col transition-all duration-300`}
       >
         {isExpanded && (
           <div className="flex flex-col flex-1 px-2 py-4">
             {/* Nav Items */}
-            <nav className="flex flex-col space-y-2 flex-1">
+            <nav className="flex flex-col space-y-2">
               {navItems.map((item, index) => {
                 const isActive = location.pathname === item.path;
                 return (
@@ -63,8 +63,8 @@ const Nav = () => {
               })}
             </nav>
 
-            {/* Toggle Switch at Bottom */}
-            <div className="mt-auto px-2 mb-2">
+            {/* Toggle Switch directly below nav */}
+            <div className="px-2 mt-3">
               <span className="text-xs font-semibold text-gray-600 mb-1 block">
                 {isToggled ? "ON" : "OFF"}
               </span>

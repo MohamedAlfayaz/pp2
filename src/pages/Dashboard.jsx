@@ -11,13 +11,13 @@ const fadeInVariant = {
 
 const Dashboard = () => {
   return (
-    <div className="h-screen">
-      <div className="grid grid-cols-6 grid-rows-7 gap-2 h-full">
+    <div className="max-h-full max-w-full overflow-hidden p-2">
+      <div className="grid grid-cols-6 grid-rows-7 gap-2 max-h-full max-w-full">
         <motion.div
           variants={fadeInVariant}
           initial="hidden"
           animate="visible"
-          className="col-span-2 row-span-7 rounded-xl"
+          className="col-span-2 row-span-7"
         >
           <Tail />
         </motion.div>
@@ -27,7 +27,7 @@ const Dashboard = () => {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.2 }}
-          className="col-span-2 row-span-7 col-start-3 rounded-xl"
+          className="col-span-2 row-span-7 col-start-3"
         >
           <Process />
         </motion.div>
@@ -37,7 +37,7 @@ const Dashboard = () => {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.4 }}
-          className="col-span-2 row-span-7 col-start-5 rounded-xl"
+          className="col-span-2 row-span-7 col-start-5"
         >
           <Output />
         </motion.div>

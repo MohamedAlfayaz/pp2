@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 
 const SensorValues = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("0000");
 
   useEffect(() => {
-    const random = (Math.random() * 100).toFixed(1);
+    // Generate a random 4-digit number, padded with zeros if needed
+    const random = Math.floor(Math.random() * 10000)
+      .toString()
+      .padStart(4, "0");
     setValue(random);
   }, []);
 
+  const firstTwo = value.slice(0, 2);
+  const lastTwo = value.slice(2, 4);
+
   return (
-    <div className="flex items-center justify-center ">
-      <div className="text-xl font-extrabold text-gray-700 shadow-2xl tracking-wide">
-        {value}
+    <div className="flex items-center justify-center">
+      <div className="text-gray-700">
+        <span className="text-lg font-bold">{firstTwo}.</span>
+        <span className="text-sm font-semibold ml-0.5">{lastTwo}</span>
       </div>
     </div>
   );
