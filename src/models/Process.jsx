@@ -4,6 +4,7 @@ import { SlidersHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
 import image from "../images/process.png";
 
+
 const Process = () => {
   const [selectedId, setSelectedId] = useState(null);
 

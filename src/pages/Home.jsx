@@ -6,6 +6,7 @@ import Motor from "./Motor";
 import Graph from "./Graph";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
+import Card from "./Card";
 
 const Home = () => {
   return (
@@ -13,20 +14,13 @@ const Home = () => {
       <HashRouter>
         <TopNav />
         <Nav />
-        <div className="mt-13">
+        <div className="mt-15">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/export" element={<Export />} />
             <Route path="/graph" element={<Graph />} />
             <Route path="/motor" element={<Motor />} />
-            <Route
-              path="*"
-              element={
-                <div className="flex items-center justify-center mt-4">
-                  Select Process or Output
-                </div>
-              }
-            />
+            <Route path="/card" element={<Card />} />
           </Routes>
         </div>
       </HashRouter>

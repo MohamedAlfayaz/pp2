@@ -1,34 +1,47 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FaTh, FaDownload, FaChartLine, FaCogs } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  FaTh,
+  FaDownload,
+  FaChartLine,
+  FaCogs,
+  FaRegCreditCard,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 import TopNav from "./TopNav";
 
 const Nav = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isToggled, setIsToggled] = useState(true);
 
   const navItems = [
-    { path: "/", icon: <FaTh />, title: "Input" },
+    { path: "/", icon: <FaTh />, title: "Dashboard" },
     { path: "/export", icon: <FaDownload />, title: "Export" },
     { path: "/graph", icon: <FaChartLine />, title: "Graph" },
     { path: "/motor", icon: <FaCogs />, title: "Motor" },
+    { path: "/card", icon: <FaRegCreditCard />, title: "Card" },
   ];
 
   const toggleSidebar = () => setIsExpanded(!isExpanded);
   const toggleSwitch = () => setIsToggled(!isToggled);
-  const handleNavClick = () => setIsExpanded(false);
+
+  const handleNavClick = (path) => {
+    setIsExpanded(false);
+    navigate(path);
+  };
 
   return (
     <>
       <TopNav toggleSidebar={toggleSidebar} />
 
       <motion.div
-        animate={{ width: isExpanded ? 180 : 60 }}
+        animate={{ width: isExpanded ? 140 : 60 }}
+        initial={{ x: 180 }}
         className={`${
           isExpanded ? "bg-[#f8f4ef]" : "bg-transparent"
-        } fixed top-15 left-0 h-full z-40 flex flex-col transition-all duration-300`}
+        } fixed top-[60px] right-0 h-[calc(100%-60px)] z-40 flex flex-col transition-all duration-300`}
       >
         {isExpanded && (
           <div className="flex flex-col flex-1 px-2 py-4">
@@ -39,31 +52,28 @@ const Nav = () => {
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: 20 }} // slide from right
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05, duration: 0.3 }}
-                    className={`flex items-center w-full px-2 py-2 rounded-lg transition-colors ${
+                    onClick={() => handleNavClick(item.path)}
+                    className={`flex items-center w-full px-2 py-2 rounded-lg cursor-pointer transition-colors ${
                       isActive
                         ? "bg-blue-100 text-blue-800"
                         : "text-gray-600 hover:bg-gray-200"
                     }`}
                   >
-                    <Link
-                      to={item.path}
-                      onClick={handleNavClick}
-                      className="flex items-center w-full"
-                    >
+                    <div className="flex items-center w-full">
                       <span className="text-xl">{item.icon}</span>
                       <span className="ml-3 text-sm font-medium">
                         {item.title}
                       </span>
-                    </Link>
+                    </div>
                   </motion.div>
                 );
               })}
             </nav>
 
-            {/* Toggle Switch directly below nav */}
+            {/* Toggle Switch */}
             <div className="px-2 mt-3">
               <span className="text-xs font-semibold text-gray-600 mb-1 block">
                 {isToggled ? "ON" : "OFF"}

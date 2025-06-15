@@ -4,6 +4,7 @@ import { LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import image from "../images/output.png";
 
+
 const Output = () => {
   const [selectedId, setSelectedId] = useState(null);
 
